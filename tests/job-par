@@ -1,0 +1,26 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Run Tests in Parallel') {
+      steps {
+        script {
+          // Split into 2 buckets based on previous timing data
+          def splits = splitTests parallelism: [$class: 'CountDrivenParallelism', size: 2], generateInclusions: true
+          def branches = [:]
+          splits.eachWithIndex { split, idx ->
+            branches["Split-${idx}"] = {
+              node {
+                echo "Running split ${idx}: ${split.list}"
+                // simulate test (we ignore actual file filters here for simplicity)
+                sh "./run_test.sh Dummy${idx} ${idx + 1}"
+                junit 'reports/TEST-*.xml'
+              }
+            }
+          }
+          parallel branches
+        }
+      }
+    }
+  }
+}
