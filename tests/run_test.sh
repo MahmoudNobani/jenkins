@@ -12,3 +12,4 @@ cat > reports/TEST-${TEST_NAME}.xml <<EOF
   <testcase classname="Dummy" name="${TEST_NAME}" time="${SLEEP}"/>
 </testsuite>
 EOF
+echo $pwd
