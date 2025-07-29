@@ -1,16 +1,33 @@
 pipeline {
-  agent any
+    agent any
 
-  stages {
-    stage('Run All Tests Sequentially') {
-      steps {
-        script {
-          sh './tests/run_test.sh A 1'
-          sh './tests/run_test.sh B 2'
-          sh './tests/run_test.sh C 3'
+    stages {
+        stage('Run Tests in Parallel') {
+            parallel {
+                stage('Test A') {
+                    steps {
+                        sh './tests/run_test.sh A 1'
+                    }
+                }
+                stage('Test B') {
+                    steps {
+                        sh './tests/run_test.sh B 2'
+                    }
+                }
+                stage('Test C') {
+                    steps {
+                        sh './tests/run_test.sh C 3'
+                    }
+                }
+            }
         }
-        junit './tests/reports/TEST-A.xml'
-      }
+
+        stage('Archive Results') {
+            steps {
+                echo 'Archiving test results...'
+                sh 'ls -lR tests'  // Optional: Debug
+                junit '**/tests/reports/TEST-*.xml'
+            }
+        }
     }
-  }
 }
