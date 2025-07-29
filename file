@@ -1,0 +1,31 @@
+pipeline {
+    agent { label 'first' }
+
+    environment {
+        GREETING = 'Hello FOLKS!'
+    }
+
+    parameters {
+        string(name: 'USERNAME', defaultValue: 'Mahmoud', description: 'Who are we greeting?')
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo "Building..."
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo "Testing..."
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo "${GREETING} Pipeline ran for ${params.USERNAME}"
+            }
+        }
+    }
+}
