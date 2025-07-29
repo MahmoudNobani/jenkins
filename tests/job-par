@@ -13,8 +13,8 @@ pipeline {
               node {
                 echo "Running split ${idx}: ${split.list}"
                 // simulate test (we ignore actual file filters here for simplicity)
-                sh "./run_test.sh Dummy${idx} ${idx + 1}"
-                junit 'reports/TEST-*.xml'
+                sh "./tests/run_test.sh Dummy${idx} ${idx + 1}"
+                junit './tests/reports/TEST-*.xml'
               }
             }
           }

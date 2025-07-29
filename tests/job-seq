@@ -5,11 +5,11 @@ pipeline {
     stage('Run All Tests Sequentially') {
       steps {
         script {
-          sh './run_test.sh A 1'
-          sh './run_test.sh B 2'
-          sh './run_test.sh C 3'
+          sh './tests/run_test.sh A 1'
+          sh './tests/run_test.sh B 2'
+          sh './tests/run_test.sh C 3'
         }
-        junit 'reports/TEST-*.xml'
+        junit './tests/reports/TEST-*.xml'
       }
     }
   }
