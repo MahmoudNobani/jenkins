@@ -12,7 +12,7 @@ echo "Test name: $TEST_NAME"
 echo "Sleep duration: $SLEEP seconds"
 
 # Create output directory
-REPORT_DIR="tests/reports"
+REPORT_DIR="/home/mahmoud/Desktop/jenkins/jenkins/tests/reports"
 mkdir -p "$REPORT_DIR"
 echo "Created report directory: $REPORT_DIR"
 
