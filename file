@@ -2,7 +2,7 @@ pipeline {
     agent { label 'first' }
 
     environment {
-        GREETING = 'Hello FOLKS!'
+        GREETING = 'Hello DUDE!'
     }
 
     parameters {
