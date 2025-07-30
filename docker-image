@@ -1,0 +1,16 @@
+pipeline {
+    agent {
+        docker {
+            image 'alpine'  // Lightweight Linux distro
+        }
+    }
+
+    stages {
+        stage('Run Shell') {
+            steps {
+                sh 'echo "Hello from inside Docker!"'
+                sh 'uname -a'
+            }
+        }
+    }
+}
