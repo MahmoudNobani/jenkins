@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Greet') {
             steps {
-                sayHello(env.BUILD_NUMBER)
+                sayHello(currentBuild.number)
                 sayHello('Mahmoud') // Uses vars/sayHello.groovy
             }
         }
