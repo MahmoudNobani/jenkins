@@ -9,21 +9,21 @@ pipeline {
         CRED_ID = credentials('mahmoudN')  // Automatically binds username/password
     }
 
-    stage('Show Credentials') {
-        steps {
-            withCredentials([usernamePassword(credentialsId: 'mahmoudN', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                sh '''
-                    echo "Username: $USERNAME"
-                    echo "Password: $PASSWORD"
-                '''
-            }
-
-            echo "Using credentials..."
-            echo "Username: ${env.CRED_ID_USR}"
-        }
-    }
-
     stages {
+
+        stage('Show Credentials') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'mahmoudN', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh '''
+                        echo "Username: $USERNAME"
+                        echo "Password: $PASSWORD"
+                    '''
+                }
+
+                echo "Using credentials..."
+                echo "Username: ${env.CRED_ID_USR}"
+            }
+        }
         stage('Greet') {
             steps {
                 sayHello('Mahmoud') // Uses vars/sayHello.groovy
