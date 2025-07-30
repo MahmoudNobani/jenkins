@@ -25,7 +25,7 @@ pipeline {
         stage('Build Info') {
             steps {
                 script {
-                    sayHello(currentBuild.number)
+                    sayHello("${currentBuild.number}")
                     echo "🔧 Build Number: ${currentBuild.number}"
                 }
             }
