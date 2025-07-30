@@ -1,0 +1,10 @@
+{
+  "dev": {
+    "host": "dev.example.com",
+    "port": 22
+  },
+  "prod": {
+    "host": "prod.example.com",
+    "port": 22
+  }
+}

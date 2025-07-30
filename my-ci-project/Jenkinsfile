@@ -1,0 +1,24 @@
+// Load the local shared library (defined in the same repo)
+@Library('my-local-lib') _
+import org.example.MathUtils
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Greet') {
+            steps {
+                sayHello('Mahmoud') // Uses vars/sayHello.groovy
+            }
+        }
+
+        stage('Math') {
+            steps {
+                script {
+                    def result = MathUtils.square(6)
+                    echo "6 squared is ${result}"
+                }
+            }
+        }
+    }
+}
