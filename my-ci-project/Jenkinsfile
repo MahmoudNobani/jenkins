@@ -9,6 +9,7 @@ pipeline {
         stage('Greet') {
             steps {
                 sayHello('Mahmoud') // Uses vars/sayHello.groovy
+                sayHello("${currentBuild.number}")
             }
         }
 
