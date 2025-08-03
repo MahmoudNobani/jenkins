@@ -1,7 +1,7 @@
 // Load the local shared library (defined in the same repo)
 @Library('my-local-lib') _
 import org.example.MathUtils
-import org.example.Dev
+import org.example.Deployer
 
 pipeline {
     agent any
