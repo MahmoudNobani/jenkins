@@ -10,9 +10,9 @@ pipeline {
         CRED_ID = credentials('mahmoudN')  // Automatically binds username/password
     }
 
-    tools {
-        python 'Python3.9'  // Refers to the name you gave in the Jenkins UI
-    }
+    // tools {
+    //    python 'Python3.9'  // Refers to the name you gave in the Jenkins UI
+   // }
 
     stages {
 
