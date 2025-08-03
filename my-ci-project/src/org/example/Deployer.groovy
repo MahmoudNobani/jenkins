@@ -9,7 +9,7 @@ class Deployer implements Serializable {
     def callMe() {
         // Always call the steps object
         steps.echo("Test")
-        steps.echo("${steps.env.BRANCH_NAME}")
+        steps.echo("${steps.env.BUILD_NUMBER}")
         steps.sh("ls -al")
     }
 }
