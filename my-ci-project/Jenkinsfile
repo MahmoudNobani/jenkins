@@ -26,9 +26,12 @@ pipeline {
         }
         stage('Greet') {
             steps {
-                sayHello('Mahmoud') // Uses vars/sayHello.groovy
-                sayHello("${currentBuild.number}")
-                sayHello.whereAreU('away')
+                script {
+                    sayHello.whereAreU('away')  // ✅ Allowed inside script block
+                }
+                sayHello('Mahmoud') // Uses vars/sayHello.groovy allowed
+                sayHello("${currentBuild.number}") // allowed
+                //sayHello.whereAreU('away') //not allowed
             }
         }
 
