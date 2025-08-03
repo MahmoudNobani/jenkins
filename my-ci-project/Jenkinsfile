@@ -10,6 +10,10 @@ pipeline {
         CRED_ID = credentials('mahmoudN')  // Automatically binds username/password
     }
 
+    tools {
+        python 'Python3.9'  // Refers to the name you gave in the Jenkins UI
+    }
+
     stages {
 
         stage('Show Credentials') {
@@ -20,11 +24,19 @@ pipeline {
                         echo "Password: $PASSWORD"
                     '''
                 }
+            
 
                 echo "Using credentials..."
                 echo "Username: ${env.CRED_ID_USR}"
             }
         }
+
+        stage('Check Python Version') {
+            steps {
+                sh 'python --version'
+            }
+        }
+
         stage('Greet') {
             steps {
                 script {
