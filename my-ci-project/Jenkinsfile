@@ -27,7 +27,7 @@ pipeline {
         stage('Greet') {
             steps {
                 script {
-                    sayHello.whereAreU('away')  // ✅ Allowed inside script block
+                    sayHello.whereAreU('away')  // Allowed inside script block
                 }
                 sayHello('Mahmoud') // Uses vars/sayHello.groovy allowed
                 sayHello("${currentBuild.number}") // allowed
@@ -37,10 +37,10 @@ pipeline {
 
         stage('Math') {
             steps {
-                script {
+                //script {
                     def result = MathUtils.square(6)
                     echo "6 squared is ${result}"
-                }
+                //}
             }
         }
 
