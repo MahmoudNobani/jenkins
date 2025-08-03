@@ -28,6 +28,7 @@ pipeline {
             steps {
                 sayHello('Mahmoud') // Uses vars/sayHello.groovy
                 sayHello("${currentBuild.number}")
+                sayHello.whereAreU('away')
             }
         }
 

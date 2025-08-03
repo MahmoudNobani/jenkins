@@ -1,0 +1,27 @@
+pipeline {
+  agent none
+  stages {
+    stage('Parallel') {
+      parallel {
+        stage('Task A') {
+          agent { label 'first' }
+          steps {
+            sh 'echo Running A; sleep 5'
+          }
+        }
+        stage('Task B') {
+          agent { label 'first' }
+          steps {
+            sh 'echo Running B; sleep 5'
+          }
+        }
+        stage('Task C') {
+          agent { label 'first' }
+          steps {
+            sh 'echo Running c; sleep 2'
+          }
+        }
+      }
+    }
+  }
+}

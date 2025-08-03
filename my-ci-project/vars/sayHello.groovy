@@ -3,3 +3,7 @@ def call(String name = 'World') {
     echo banner
     echo "👋 Hello, ${name}!"
 }
+
+def whereAreU(String loc = 'home') {
+    echo " i am ${loc}"
+}
