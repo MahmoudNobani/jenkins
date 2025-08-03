@@ -17,7 +17,9 @@ pipeline {
     stages {
 
         stage('Checkout') {
-            git branch: 'test', url: 'https://github.com/MahmoudNobani/jenkins.git'
+            steps {
+                git branch: 'test', url: 'https://github.com/MahmoudNobani/jenkins.git'
+            }
         }
 
         stage('Show Credentials') {
