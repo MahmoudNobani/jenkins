@@ -79,7 +79,7 @@ pipeline {
         stage('send to slack') {
             steps {
                 script {
-                    slackSend color: "good", message: "Message from Jenkins Pipeline"
+                    slackSend color: "good", message: "Message from me, hello Pipeline"
                 }
             }
         }
@@ -94,7 +94,7 @@ pipeline {
              bcc: 'audit@example.com',
              from: 'jenkins@example.com',
              replyTo: 'noreply@example.com',
-             subject: "Build ${env.JOB_NAME} #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
+             subject: "HELLO ${env.JOB_NAME} #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
              body: """
                     Hello Team,
 
