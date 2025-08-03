@@ -1,6 +1,7 @@
 // Load the local shared library (defined in the same repo)
 @Library('my-local-lib') _
 import org.example.MathUtils
+import org.example.Dev
 
 pipeline {
     agent any
@@ -37,10 +38,19 @@ pipeline {
 
         stage('Math') {
             steps {
-                //script {
-                    def result = MathUtils.square(6)
+                script {
+                    def result = MathUtils.square(6) //need script{}
                     echo "6 squared is ${result}"
-                //}
+                }
+            }
+        }
+
+        stage('deployer') {
+            steps {
+                script {
+                    def deployer = new Deployer(this) 
+                    deployer.callMe()
+                }
             }
         }
 
