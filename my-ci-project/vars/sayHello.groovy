@@ -3,7 +3,8 @@ def call(String name = 'World') {
     echo banner
     echo "👋 Hello, ${name}!"
     echo "Pipeline ran for ${params.USERNAME}"
-    echo "${GREETING}"
+    //echo "${GREETING}" this owrks
+    echo "${env.GREETING}"
 }
 
 def whereAreU(String loc = 'home') {
