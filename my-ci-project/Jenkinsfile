@@ -8,6 +8,12 @@ pipeline {
 
     environment {
         CRED_ID = credentials('mahmoudN')  // Automatically binds username/password
+        GREETING = 'Hello DUDE!'
+    }
+    
+    parameters {
+        string(name: 'BRANCH_FILE', defaultValue: 'DEV', description: 'testing')
+        string(name: 'USERNAME', defaultValue: 'Mahmoud', description: 'Who are we greeting?')
     }
 
     // tools {
@@ -16,7 +22,7 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
+        stage('Checkout') { //not needed here, didnt work maybe multibranch project
             steps {
                 git branch: 'test', url: 'https://github.com/MahmoudNobani/jenkins.git'
             }
