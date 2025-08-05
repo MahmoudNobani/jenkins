@@ -37,7 +37,6 @@ pipeline {
                     '''
                 }
             
-                echo "${ls}"
                 echo "Using credentials..."
                 echo "Username: ${env.CRED_ID_USR}"
             }
@@ -46,6 +45,8 @@ pipeline {
         stage('Check Python Version') {
             steps {
                 sh 'python --version'
+                def lsOutput = sh(script: 'ls', returnStdout: true)
+                echo "${lsOutput}"
             }
         }
 
