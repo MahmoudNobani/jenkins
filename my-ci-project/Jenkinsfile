@@ -37,7 +37,7 @@ pipeline {
                     '''
                 }
             
-                echo "Using credentials..."
+                echo "Using credentials????????..."
                 echo "Username: ${env.CRED_ID_USR}"
             }
         }
@@ -130,9 +130,9 @@ pipeline {
              bcc: 'audit@example.com',
              from: 'jenkins@example.com',
              replyTo: 'noreply@example.com',
-             subject: "HELLO ${env.JOB_NAME} #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
+             subject: "HELLO????????? ${env.JOB_NAME} #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
              body: """
-                    Hello Team,
+                    Hello???????? Team,
 
                     Build Details:
                     - Job: ${env.JOB_NAME}
