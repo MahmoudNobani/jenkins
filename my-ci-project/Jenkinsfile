@@ -93,7 +93,7 @@ pipeline {
                 script {
                     // Run downstream job with parameters
                     def downstreamBuild = build(
-                        job: 'downstream-pipeline',   // Must match exact Jenkins job name
+                        job: 'downstream',   // Must match exact Jenkins job name
                         parameters: [
                             string(name: 'NAME', value: 'Mahmoud Nobani'),
                             booleanParam(name: 'DO_EXTRA', value: true)
