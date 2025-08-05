@@ -52,6 +52,16 @@ pipeline {
             }
         }
 
+        stage('run the thing') {
+            steps {
+                script {
+                    // Read or run a script from service-a
+                    sh 'chmod +x run.sh'
+                    sh 'run.sh'
+                }
+            }
+        }
+
         stage('Greet') {
             steps {
                 script {
