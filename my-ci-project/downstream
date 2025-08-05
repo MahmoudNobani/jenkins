@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+    parameters {
+        string(name: 'NAME', defaultValue: 'Mahmoud', description: 'Your name')
+        booleanParam(name: 'DO_EXTRA', defaultValue: false, description: 'Run extra step?')
+    }
+
+    stages {
+        stage('Greeting') {
+            steps {
+                echo "Hello Folks, ${params.NAME} is talking!"
+            }
+        }
+
+        stage('Optional Step') {
+            when { expression { params.DO_EXTRA } }
+            steps {
+                echo "Running extra step for ${params.NAME}..."
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Downstream job completed successfully!"
+        }
+        failure {
+            echo "Downstream job failed!"
+        }
+    }
+}

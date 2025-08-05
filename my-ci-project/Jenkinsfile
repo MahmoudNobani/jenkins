@@ -88,6 +88,27 @@ pipeline {
             }
         }
 
+        stage('Trigger Downstream Pipeline') {
+            steps {
+                script {
+                    // Run downstream job with parameters
+                    def downstreamBuild = build(
+                        job: 'downstream-pipeline',   // Must match exact Jenkins job name
+                        parameters: [
+                            string(name: 'NAME', value: 'Mahmoud Nobani'),
+                            booleanParam(name: 'DO_EXTRA', value: true)
+                        ],
+                        wait: true,      // Wait until downstream finishes
+                        propagate: true  // Fail main job if downstream fails
+                    )
+
+                    // Log downstream result
+                    echo "Downstream build number: ${downstreamBuild.number}"
+                    echo "Downstream build result: ${downstreamBuild.result}"
+                }
+            }
+        }
+
         stage('send to slack') {
             steps {
                 script {
