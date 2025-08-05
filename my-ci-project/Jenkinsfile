@@ -37,7 +37,7 @@ pipeline {
                     '''
                 }
             
-
+                echo ${ls}
                 echo "Using credentials..."
                 echo "Username: ${env.CRED_ID_USR}"
             }
@@ -93,7 +93,7 @@ pipeline {
                 script {
                     // Run downstream job with parameters
                     def downstreamBuild = build(
-                        job: 'downstream',   // Must match exact Jenkins job name
+                        job: 'downstream',   // Must match exact Jenkins job name (should exist in jenkins before running)
                         parameters: [
                             string(name: 'NAME', value: 'Mahmoud Nobani'),
                             booleanParam(name: 'DO_EXTRA', value: true)
