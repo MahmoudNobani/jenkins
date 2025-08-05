@@ -45,8 +45,10 @@ pipeline {
         stage('Check Python Version') {
             steps {
                 sh 'python --version'
-                def lsOutput = sh(script: 'ls', returnStdout: true)
-                echo "${lsOutput}"
+                script {
+                    def lsOut = sh(script: 'ls', returnStdout: true)
+                    echo "${lsOut}"
+                }
             }
         }
 
