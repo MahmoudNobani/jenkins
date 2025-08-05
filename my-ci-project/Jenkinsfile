@@ -49,6 +49,7 @@ pipeline {
                     def lsOut = sh(script: 'ls', returnStdout: true)
                     echo "${lsOut}"
                 }
+                sh 'pwd'
             }
         }
 
