@@ -23,6 +23,8 @@ pipeline {
     stages {
 
         stage('Checkout') { //not needed here, didnt work maybe multibranch project
+        //it works for resources (like scripts), bt the pipline is specifed in the job itslf and deosnt change
+        //test with run.sh
             steps {
                 git branch: 'test', url: 'https://github.com/MahmoudNobani/jenkins.git'
             }

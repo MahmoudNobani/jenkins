@@ -11,5 +11,6 @@ class Deployer implements Serializable {
         steps.echo("Test")
         steps.echo("${steps.env.BUILD_NUMBER}")
         steps.sh("ls -al")
+        steps.echo("workspace dir: ${steps.env.WORKSPACE}")
     }
 }
